@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proceso Estratégico - Gráfica Interactiva</title>
+    <title>Gestión Estratégica y Financiera - Proceso + ROI/ROE/ROA</title>
     <style>
         * {
             box-sizing: border-box;
@@ -13,31 +13,31 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #eef2f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             padding: 20px;
         }
-        .container {
-            max-width: 1000px;
-            width: 100%;
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ===== CARD DEL PROCESO ESTRATÉGICO ===== */
+        .card-proceso {
             background: white;
             padding: 30px;
             border-radius: 20px;
             box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
         }
-        h1 {
+        .card-proceso h1 {
             text-align: center;
             color: #0b2b4a;
             font-weight: 700;
             font-size: 1.8rem;
-            margin-bottom: 10px;
         }
-        .subtitle {
+        .card-proceso .subtitle {
             text-align: center;
             color: #4a5b6e;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             font-size: 1rem;
         }
         .graph-container {
@@ -58,7 +58,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 16px 30px;
-            margin: 20px 0 10px 0;
+            margin: 18px 0 8px 0;
             padding: 12px 20px;
             background: #f2f7ff;
             border-radius: 12px;
@@ -79,230 +79,40 @@
             text-align: center;
             color: #4a5b6e;
             font-size: 0.9rem;
-            margin-top: 16px;
+            margin-top: 14px;
             background: #f0f5fe;
             padding: 12px 20px;
             border-radius: 10px;
         }
         .badge {
             display: inline-block;
-            background: #1e6f9f;
-            color: white;
             font-weight: 600;
             padding: 2px 12px;
             border-radius: 30px;
             font-size: 0.75rem;
+            color: white;
         }
+        .badge.blue { background: #1e6f9f; }
         .badge.green { background: #27ae60; }
         .badge.orange { background: #e67e22; }
         .badge.purple { background: #8e44ad; }
         .badge.red { background: #e74c3c; }
-        @media (max-width: 600px) {
-            .container { padding: 15px; }
-            h1 { font-size: 1.3rem; }
-            .legend { gap: 8px 16px; font-size: 0.8rem; }
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <h1>📊 Proceso Estratégico</h1>
-    <p class="subtitle">Diagrama de flujo basado en la imagen: <strong>Diagnóstico → Formulación → Implementación → Evaluación</strong></p>
 
-    <div class="graph-container">
-        <svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
-            <!-- Fondo sutil -->
-            <rect width="900" height="700" fill="#f8faff" rx="10" />
-
-            <!-- ================================================== -->
-            <!-- 1. DIAGNÓSTICO (izquierda, arriba)                 -->
-            <!-- ================================================== -->
-            <rect x="40" y="50" width="180" height="60" rx="14" fill="#1e6f9f" stroke="#0b2b4a" stroke-width="2.5" />
-            <text x="130" y="87" fill="white" font-size="18" font-weight="700" text-anchor="middle">DIAGNÓSTICO</text>
-
-            <!-- FODA (debajo de Diagnóstico) -->
-            <rect x="40" y="130" width="180" height="50" rx="12" fill="#d6e8ff" stroke="#1e6f9f" stroke-width="1.8" stroke-dasharray="4 3" />
-            <text x="130" y="160" fill="#1a3a5a" font-size="15" font-weight="600" text-anchor="middle">FODA</text>
-
-            <!-- Flecha Diagnóstico → Formulación -->
-            <line x1="220" y1="80" x2="330" y2="80" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrow)" />
-
-            <!-- ================================================== -->
-            <!-- 2. FORMULACIÓN ESTRATÉGICA (centro, arriba)        -->
-            <!-- ================================================== -->
-            <rect x="340" y="50" width="200" height="60" rx="14" fill="#27ae60" stroke="#1a6b3c" stroke-width="2.5" />
-            <text x="440" y="78" fill="white" font-size="16" font-weight="700" text-anchor="middle">FORMULACIÓN</text>
-            <text x="440" y="98" fill="white" font-size="13" font-weight="500" text-anchor="middle">ESTRATÉGICA</text>
-
-            <!-- Misión y Visión (debajo de Formulación) -->
-            <rect x="340" y="130" width="200" height="40" rx="10" fill="#d4f0dc" stroke="#27ae60" stroke-width="1.8" stroke-dasharray="4 3" />
-            <text x="440" y="156" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">VISIÓN / MISIÓN</text>
-
-            <!-- Objetivos y Metas (más abajo) -->
-            <rect x="340" y="190" width="200" height="40" rx="10" fill="#d4f0dc" stroke="#27ae60" stroke-width="1.8" stroke-dasharray="4 3" />
-            <text x="440" y="216" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">OBJETIVOS / METAS</text>
-
-            <!-- Flecha Formulación → Implementación -->
-            <line x1="540" y1="80" x2="630" y2="80" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrow)" />
-
-            <!-- ================================================== -->
-            <!-- 3. IMPLEMENTACIÓN (derecha, arriba)               -->
-            <!-- ================================================== -->
-            <rect x="640" y="50" width="200" height="60" rx="14" fill="#e67e22" stroke="#a3540f" stroke-width="2.5" />
-            <text x="740" y="78" fill="white" font-size="16" font-weight="700" text-anchor="middle">IMPLEMENTACIÓN</text>
-            <text x="740" y="98" fill="white" font-size="13" font-weight="500" text-anchor="middle">(POI)</text>
-
-            <!-- Recursos y Presupuesto (debajo de Implementación) -->
-            <rect x="640" y="130" width="200" height="40" rx="10" fill="#fdebd0" stroke="#e67e22" stroke-width="1.8" stroke-dasharray="4 3" />
-            <text x="740" y="156" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">RECURSOS</text>
-
-            <rect x="640" y="190" width="200" height="40" rx="10" fill="#fdebd0" stroke="#e67e22" stroke-width="1.8" stroke-dasharray="4 3" />
-            <text x="740" y="216" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">PRESUPUESTO</text>
-
-            <!-- ================================================== -->
-            <!-- 4. EVALUACIÓN (abajo, centrado)                    -->
-            <!-- ================================================== -->
-            <rect x="340" y="450" width="200" height="60" rx="14" fill="#8e44ad" stroke="#5b2c7a" stroke-width="2.5" />
-            <text x="440" y="487" fill="white" font-size="18" font-weight="700" text-anchor="middle">EVALUACIÓN</text>
-
-            <!-- ================================================== -->
-            <!-- FLECHAS VERTICALES: Diagnóstico → Formulación →   -->
-            <!-- Implementación → Evaluación (conectores)          -->
-            <!-- ================================================== -->
-
-            <!-- Flecha de Diagnóstico hacia abajo (FODA) -->
-            <line x1="130" y1="110" x2="130" y2="125" stroke="#1e6f9f" stroke-width="2.5" marker-end="url(#arrow-small)" />
-
-            <!-- Flecha de Formulación hacia abajo (Visión/Misión) -->
-            <line x1="440" y1="110" x2="440" y2="125" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrow-small)" />
-            <!-- Visión/Misión → Objetivos/Metas -->
-            <line x1="440" y1="170" x2="440" y2="185" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrow-small)" />
-
-            <!-- Flecha de Implementación hacia abajo (Recursos) -->
-            <line x1="740" y1="110" x2="740" y2="125" stroke="#e67e22" stroke-width="2.5" marker-end="url(#arrow-small)" />
-            <!-- Recursos → Presupuesto -->
-            <line x1="740" y1="170" x2="740" y2="185" stroke="#e67e22" stroke-width="2.5" marker-end="url(#arrow-small)" />
-
-            <!-- ================================================== -->
-            <!-- FLECHAS DE RETORNO (evaluación → diagnóstico)      -->
-            <!-- ================================================== -->
-            <!-- Línea curva grande desde Evaluación hacia Diagnóstico -->
-            <path d="M 340 480 L 130 480 L 130 115" fill="none" stroke="#e74c3c" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#arrow-red)" />
-            <text x="200" y="470" fill="#e74c3c" font-size="13" font-weight="600" text-anchor="middle">RETROALIMENTACIÓN</text>
-
-            <!-- Flecha de Implementación → Evaluación (bajada) -->
-            <line x1="740" y1="250" x2="740" y2="400" stroke="#2c3e50" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#arrow)" />
-            <text x="760" y="330" fill="#2c3e50" font-size="12" font-weight="500" transform="rotate(90, 760, 330)">EJECUCIÓN</text>
-
-            <!-- Flecha de Formulación → Evaluación (bajada) -->
-            <line x1="440" y1="240" x2="440" y2="400" stroke="#2c3e50" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#arrow)" />
-            <text x="420" y="330" fill="#2c3e50" font-size="12" font-weight="500" transform="rotate(-90, 420, 330)">SEGUIMIENTO</text>
-
-            <!-- ================================================== -->
-            <!-- PERSONAS (elemento lateral)                        -->
-            <!-- ================================================== -->
-            <rect x="40" y="450" width="180" height="60" rx="14" fill="#e74c3c" stroke="#a93226" stroke-width="2.5" />
-            <text x="130" y="480" fill="white" font-size="18" font-weight="700" text-anchor="middle">PERSONAS</text>
-            <text x="130" y="500" fill="white" font-size="12" font-weight="400" text-anchor="middle">(Talento Humano)</text>
-
-            <!-- Flecha Personas → Diagnóstico -->
-            <line x1="130" y1="510" x2="130" y2="440" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrow-red)" />
-            <!-- Flecha Personas → Implementación (conexión) -->
-            <path d="M 220 480 L 330 480" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrow-red)" />
-
-            <!-- ================================================== -->
-            <!-- DEFINICIONES DE MARCADORES DE FLECHA               -->
-            <!-- ================================================== -->
-            <defs>
-                <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c3e50" />
-                </marker>
-                <marker id="arrow-small" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c3e50" />
-                </marker>
-                <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#e74c3c" />
-                </marker>
-            </defs>
-
-            <!-- ================================================== -->
-            <!-- ETIQUETAS ADICIONALES (relaciones)                 -->
-            <!-- ================================================== -->
-            <text x="130" y="430" fill="#1a3a5a" font-size="11" font-weight="500" text-anchor="middle" fill-opacity="0.7">(Base del proceso)</text>
-            <text x="870" y="100" fill="#1a3a5a" font-size="11" font-weight="500" fill-opacity="0.6">POI = Plan Operativo</text>
-            <text x="870" y="118" fill="#1a3a5a" font-size="11" font-weight="500" fill-opacity="0.6">Institucional</text>
-
-            <!-- Título de la gráfica (dentro del SVG) -->
-            <text x="450" y="30" fill="#0b2b4a" font-size="14" font-weight="600" text-anchor="middle" fill-opacity="0.6">CICLO DEL PROCESO ESTRATÉGICO</text>
-
-            <!-- Línea de tiempo horizontal inferior -->
-            <line x1="40" y1="620" x2="840" y2="620" stroke="#b0c7e7" stroke-width="1.5" stroke-dasharray="4 4" />
-            <text x="440" y="645" fill="#4a5b6e" font-size="13" font-weight="500" text-anchor="middle">
-                Diagnóstico → Formulación → Implementación → Evaluación → (Retroalimentación)
-            </text>
-        </svg>
-    </div>
-
-    <!-- Leyenda -->
-    <div class="legend">
-        <span class="legend-item"><span class="legend-color" style="background:#1e6f9f;"></span> Diagnóstico</span>
-        <span class="legend-item"><span class="legend-color" style="background:#27ae60;"></span> Formulación</span>
-        <span class="legend-item"><span class="legend-color" style="background:#e67e22;"></span> Implementación</span>
-        <span class="legend-item"><span class="legend-color" style="background:#8e44ad;"></span> Evaluación</span>
-        <span class="legend-item"><span class="legend-color" style="background:#e74c3c;"></span> Personas / Retroalimentación</span>
-    </div>
-
-    <!-- Nota explicativa -->
-    <div class="note">
-        <strong>📌 Interpretación:</strong> El proceso estratégico comienza con el <span class="badge">Diagnóstico</span> (FODA), 
-        continúa con la <span class="badge green">Formulación</span> (Visión, Misión, Objetivos, Metas), 
-        sigue con la <span class="badge orange">Implementación</span> (POI, Recursos, Presupuesto) 
-        y finaliza con la <span class="badge purple">Evaluación</span>. 
-        <span class="badge red">Personas</span> son la base de todo el proceso y la retroalimentación permite la mejora continua.
-    </div>
-
-</div>
-</body>
-</html>
-
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROI, ROE, ROA - Indicadores Financieros</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f4fa;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1100px;
-            width: 100%;
+        /* ===== CARD ROI/ROE/ROA ===== */
+        .card-financiero {
             background: white;
             padding: 35px;
             border-radius: 24px;
             box-shadow: 0 12px 40px rgba(0,0,0,0.08);
         }
-        h1 {
+        .card-financiero h1 {
             text-align: center;
             color: #0b2b4a;
             font-weight: 700;
             font-size: 2rem;
             margin-bottom: 8px;
         }
-        .subtitle {
+        .card-financiero .subtitle {
             text-align: center;
             color: #4a5b6e;
             font-size: 1.05rem;
@@ -377,20 +187,6 @@
         .card .example strong {
             color: #0b2b4a;
         }
-        .badge {
-            display: inline-block;
-            font-weight: 600;
-            padding: 2px 14px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            color: white;
-        }
-        .badge.blue { background: #1e6f9f; }
-        .badge.green { background: #27ae60; }
-        .badge.orange { background: #e67e22; }
-        .badge.purple { background: #8e44ad; }
-
-        /* Colores específicos por tarjeta */
         .card-roi { border-top: 6px solid #1e6f9f; }
         .card-roe { border-top: 6px solid #27ae60; }
         .card-roa { border-top: 6px solid #e67e22; }
@@ -443,130 +239,264 @@
         .footer-note strong {
             color: #0b2b4a;
         }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 10px 0 5px 0;
+        }
+        .separator::before,
+        .separator::after {
+            content: '';
+            flex: 1;
+            border-bottom: 2px dashed #d4e0f0;
+        }
+        .separator span {
+            padding: 0 20px;
+            color: #7a8ba0;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 600px) {
-            .container { padding: 18px; }
-            h1 { font-size: 1.5rem; }
+            .card-proceso { padding: 15px; }
+            .card-financiero { padding: 18px; }
+            .card-proceso h1 { font-size: 1.3rem; }
+            .card-financiero h1 { font-size: 1.5rem; }
             .card h2 { font-size: 1.4rem; }
+            .legend { gap: 8px 16px; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
-<div class="container">
+<div class="main-container">
 
-    <h1>📊 ROI · ROE · ROA</h1>
-    <p class="subtitle">Indicadores financieros clave para medir la rentabilidad y eficiencia de una empresa</p>
+    <!-- ========================================================= -->
+    <!-- 1. PROCESO ESTRATÉGICO                                    -->
+    <!-- ========================================================= -->
+    <div class="card-proceso">
+        <h1>📊 Proceso Estratégico</h1>
+        <p class="subtitle">Diagrama de flujo: <strong>Diagnóstico → Formulación → Implementación → Evaluación</strong></p>
 
-    <!-- ================================================== -->
-    <!-- TARJETAS ROI, ROE, ROA                             -->
-    <!-- ================================================== -->
-    <div class="grid-3">
-        <!-- ROI -->
-        <div class="card card-roi">
-            <div class="icon">💰</div>
-            <h2>ROI</h2>
-            <div class="tagline">Retorno sobre la Inversión</div>
-            <p><strong>¿Qué mide?</strong> La rentabilidad de una inversión realizada. Compara la ganancia obtenida con el costo de la inversión.</p>
-            <div class="formula">ROI = (Ganancia – Inversión) / Inversión × 100</div>
-            <div class="example">
-                <strong>📌 Ejemplo:</strong> Inviertes S/ 10,000 en una campaña publicitaria y generas S/ 15,000 en ventas adicionales.<br>
-                <span style="background:#eaf2fd; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
-                    ROI = (15,000 – 10,000) / 10,000 × 100 = <strong>50%</strong>
-                </span>
-                <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Por cada sol invertido, ganaste S/ 0.50 adicionales.</span>
-            </div>
-            <p style="margin-top:10px; font-size:0.9rem; color:#1e6f9f;"><span class="badge blue">PREGUNTA CLAVE</span> “¿Cuánto gané respecto a lo que invertí?”</p>
+        <div class="graph-container">
+            <svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+                <rect width="900" height="700" fill="#f8faff" rx="10" />
+
+                <!-- DIAGNÓSTICO -->
+                <rect x="40" y="50" width="180" height="60" rx="14" fill="#1e6f9f" stroke="#0b2b4a" stroke-width="2.5" />
+                <text x="130" y="87" fill="white" font-size="18" font-weight="700" text-anchor="middle">DIAGNÓSTICO</text>
+                <rect x="40" y="130" width="180" height="50" rx="12" fill="#d6e8ff" stroke="#1e6f9f" stroke-width="1.8" stroke-dasharray="4 3" />
+                <text x="130" y="160" fill="#1a3a5a" font-size="15" font-weight="600" text-anchor="middle">FODA</text>
+                <line x1="220" y1="80" x2="330" y2="80" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrow)" />
+
+                <!-- FORMULACIÓN -->
+                <rect x="340" y="50" width="200" height="60" rx="14" fill="#27ae60" stroke="#1a6b3c" stroke-width="2.5" />
+                <text x="440" y="78" fill="white" font-size="16" font-weight="700" text-anchor="middle">FORMULACIÓN</text>
+                <text x="440" y="98" fill="white" font-size="13" font-weight="500" text-anchor="middle">ESTRATÉGICA</text>
+                <rect x="340" y="130" width="200" height="40" rx="10" fill="#d4f0dc" stroke="#27ae60" stroke-width="1.8" stroke-dasharray="4 3" />
+                <text x="440" y="156" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">VISIÓN / MISIÓN</text>
+                <rect x="340" y="190" width="200" height="40" rx="10" fill="#d4f0dc" stroke="#27ae60" stroke-width="1.8" stroke-dasharray="4 3" />
+                <text x="440" y="216" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">OBJETIVOS / METAS</text>
+                <line x1="540" y1="80" x2="630" y2="80" stroke="#2c3e50" stroke-width="3" marker-end="url(#arrow)" />
+
+                <!-- IMPLEMENTACIÓN -->
+                <rect x="640" y="50" width="200" height="60" rx="14" fill="#e67e22" stroke="#a3540f" stroke-width="2.5" />
+                <text x="740" y="78" fill="white" font-size="16" font-weight="700" text-anchor="middle">IMPLEMENTACIÓN</text>
+                <text x="740" y="98" fill="white" font-size="13" font-weight="500" text-anchor="middle">(POI)</text>
+                <rect x="640" y="130" width="200" height="40" rx="10" fill="#fdebd0" stroke="#e67e22" stroke-width="1.8" stroke-dasharray="4 3" />
+                <text x="740" y="156" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">RECURSOS</text>
+                <rect x="640" y="190" width="200" height="40" rx="10" fill="#fdebd0" stroke="#e67e22" stroke-width="1.8" stroke-dasharray="4 3" />
+                <text x="740" y="216" fill="#1a3a5a" font-size="14" font-weight="600" text-anchor="middle">PRESUPUESTO</text>
+
+                <!-- EVALUACIÓN -->
+                <rect x="340" y="450" width="200" height="60" rx="14" fill="#8e44ad" stroke="#5b2c7a" stroke-width="2.5" />
+                <text x="440" y="487" fill="white" font-size="18" font-weight="700" text-anchor="middle">EVALUACIÓN</text>
+
+                <!-- Flechas verticales internas -->
+                <line x1="130" y1="110" x2="130" y2="125" stroke="#1e6f9f" stroke-width="2.5" marker-end="url(#arrow-small)" />
+                <line x1="440" y1="110" x2="440" y2="125" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrow-small)" />
+                <line x1="440" y1="170" x2="440" y2="185" stroke="#27ae60" stroke-width="2.5" marker-end="url(#arrow-small)" />
+                <line x1="740" y1="110" x2="740" y2="125" stroke="#e67e22" stroke-width="2.5" marker-end="url(#arrow-small)" />
+                <line x1="740" y1="170" x2="740" y2="185" stroke="#e67e22" stroke-width="2.5" marker-end="url(#arrow-small)" />
+
+                <!-- Retroalimentación -->
+                <path d="M 340 480 L 130 480 L 130 115" fill="none" stroke="#e74c3c" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#arrow-red)" />
+                <text x="200" y="470" fill="#e74c3c" font-size="13" font-weight="600" text-anchor="middle">RETROALIMENTACIÓN</text>
+
+                <!-- Conexiones de seguimiento -->
+                <line x1="740" y1="250" x2="740" y2="400" stroke="#2c3e50" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#arrow)" />
+                <text x="760" y="330" fill="#2c3e50" font-size="12" font-weight="500" transform="rotate(90, 760, 330)">EJECUCIÓN</text>
+                <line x1="440" y1="240" x2="440" y2="400" stroke="#2c3e50" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#arrow)" />
+                <text x="420" y="330" fill="#2c3e50" font-size="12" font-weight="500" transform="rotate(-90, 420, 330)">SEGUIMIENTO</text>
+
+                <!-- PERSONAS -->
+                <rect x="40" y="450" width="180" height="60" rx="14" fill="#e74c3c" stroke="#a93226" stroke-width="2.5" />
+                <text x="130" y="480" fill="white" font-size="18" font-weight="700" text-anchor="middle">PERSONAS</text>
+                <text x="130" y="500" fill="white" font-size="12" font-weight="400" text-anchor="middle">(Talento Humano)</text>
+                <line x1="130" y1="510" x2="130" y2="440" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrow-red)" />
+                <path d="M 220 480 L 330 480" fill="none" stroke="#e74c3c" stroke-width="2.5" stroke-dasharray="5 3" marker-end="url(#arrow-red)" />
+                <text x="130" y="430" fill="#1a3a5a" font-size="11" font-weight="500" text-anchor="middle" fill-opacity="0.7">(Base del proceso)</text>
+
+                <!-- Etiquetas adicionales -->
+                <text x="870" y="100" fill="#1a3a5a" font-size="11" font-weight="500" fill-opacity="0.6">POI = Plan Operativo</text>
+                <text x="870" y="118" fill="#1a3a5a" font-size="11" font-weight="500" fill-opacity="0.6">Institucional</text>
+                <text x="450" y="30" fill="#0b2b4a" font-size="14" font-weight="600" text-anchor="middle" fill-opacity="0.6">CICLO DEL PROCESO ESTRATÉGICO</text>
+
+                <!-- Línea de tiempo -->
+                <line x1="40" y1="620" x2="840" y2="620" stroke="#b0c7e7" stroke-width="1.5" stroke-dasharray="4 4" />
+                <text x="440" y="645" fill="#4a5b6e" font-size="13" font-weight="500" text-anchor="middle">
+                    Diagnóstico → Formulación → Implementación → Evaluación → (Retroalimentación)
+                </text>
+
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c3e50" />
+                    </marker>
+                    <marker id="arrow-small" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2c3e50" />
+                    </marker>
+                    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#e74c3c" />
+                    </marker>
+                </defs>
+            </svg>
         </div>
 
-        <!-- ROE -->
-        <div class="card card-roe">
-            <div class="icon">🏦</div>
-            <h2>ROE</h2>
-            <div class="tagline">Retorno sobre el Capital</div>
-            <p><strong>¿Qué mide?</strong> La rentabilidad que genera una empresa con el capital aportado por los accionistas. Indica la eficiencia del capital propio.</p>
-            <div class="formula">ROE = (Utilidad Neta) / (Patrimonio Neto) × 100</div>
-            <div class="example">
-                <strong>📌 Ejemplo:</strong> Una empresa tiene una utilidad neta de S/ 120,000 y un patrimonio neto (capital de accionistas) de S/ 800,000.<br>
-                <span style="background:#eafaf0; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
-                    ROE = 120,000 / 800,000 × 100 = <strong>15%</strong>
-                </span>
-                <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Los accionistas obtuvieron un 15% de retorno sobre su capital.</span>
-            </div>
-            <p style="margin-top:10px; font-size:0.9rem; color:#27ae60;"><span class="badge green">PREGUNTA CLAVE</span> “¿Cuánto ganaron los accionistas respecto a su capital?”</p>
+        <div class="legend">
+            <span class="legend-item"><span class="legend-color" style="background:#1e6f9f;"></span> Diagnóstico</span>
+            <span class="legend-item"><span class="legend-color" style="background:#27ae60;"></span> Formulación</span>
+            <span class="legend-item"><span class="legend-color" style="background:#e67e22;"></span> Implementación</span>
+            <span class="legend-item"><span class="legend-color" style="background:#8e44ad;"></span> Evaluación</span>
+            <span class="legend-item"><span class="legend-color" style="background:#e74c3c;"></span> Personas / Retroalimentación</span>
         </div>
 
-        <!-- ROA -->
-        <div class="card card-roa">
-            <div class="icon">🏗️</div>
-            <h2>ROA</h2>
-            <div class="tagline">Retorno sobre los Activos</div>
-            <p><strong>¿Qué mide?</strong> La eficiencia con la que una empresa utiliza sus activos totales para generar ganancias. Mide la productividad de los activos.</p>
-            <div class="formula">ROA = (Utilidad Neta) / (Activos Totales) × 100</div>
-            <div class="example">
-                <strong>📌 Ejemplo:</strong> Una empresa tiene una utilidad neta de S/ 90,000 y activos totales (maquinaria, inventario, etc.) por S/ 1,200,000.<br>
-                <span style="background:#fef5e7; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
-                    ROA = 90,000 / 1,200,000 × 100 = <strong>7.5%</strong>
-                </span>
-                <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Cada sol en activos generó S/ 0.075 de utilidad.</span>
-            </div>
-            <p style="margin-top:10px; font-size:0.9rem; color:#e67e22;"><span class="badge orange">PREGUNTA CLAVE</span> “¿Qué tan productivos son los activos de la empresa?”</p>
+        <div class="note">
+            <strong>📌 Interpretación:</strong> El proceso estratégico comienza con el <span class="badge blue">Diagnóstico</span> (FODA),
+            continúa con la <span class="badge green">Formulación</span> (Visión, Misión, Objetivos, Metas),
+            sigue con la <span class="badge orange">Implementación</span> (POI, Recursos, Presupuesto)
+            y finaliza con la <span class="badge purple">Evaluación</span>.
+            <span class="badge red">Personas</span> son la base de todo el proceso y la retroalimentación permite la mejora continua.
         </div>
     </div>
 
-    <!-- ================================================== -->
-    <!-- TABLA COMPARATIVA                                  -->
-    <!-- ================================================== -->
-    <div class="comparison-section">
-        <h3>📋 Comparativa rápida: ROI · ROE · ROA</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Indicador</th>
-                    <th>¿Qué mide?</th>
-                    <th>Fórmula</th>
-                    <th>Pregunta clave</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="highlight-blue">
-                    <td><strong>ROI</strong></td>
-                    <td>Rentabilidad de una inversión específica</td>
-                    <td>(Ganancia – Inversión) / Inversión</td>
-                    <td>“¿Cuánto gané respecto a lo que invertí?”</td>
-                </tr>
-                <tr class="highlight-green">
-                    <td><strong>ROE</strong></td>
-                    <td>Rentabilidad del capital de los accionistas</td>
-                    <td>Utilidad Neta / Patrimonio Neto</td>
-                    <td>“¿Cuánto ganaron los accionistas respecto a su capital?”</td>
-                </tr>
-                <tr class="highlight-orange">
-                    <td><strong>ROA</strong></td>
-                    <td>Eficiencia en el uso de los activos</td>
-                    <td>Utilidad Neta / Activos Totales</td>
-                    <td>“¿Qué tan productivos son los activos de la empresa?”</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- ========================================================= -->
+    <!-- 2. SEPARADOR                                               -->
+    <!-- ========================================================= -->
+    <div class="separator">
+        <span>✦ INDICADORES FINANCIEROS ✦</span>
     </div>
 
-    <!-- ================================================== -->
-    <!-- NOTA ADICIONAL                                     -->
-    <!-- ================================================== -->
-    <div class="footer-note">
-        <strong>💡 Interpretación clave:</strong>
-        <span style="display:inline-block; margin:6px 8px 0 0;">
-            <span class="badge blue">ROI</span> → evalúa proyectos o inversiones concretas.
-            <span class="badge green">ROE</span> → mide el rendimiento para los accionistas (capital propio).
-            <span class="badge orange">ROA</span> → mide la eficiencia operativa global (todos los activos).
-        </span>
-        <br><span style="font-size:0.9rem; color:#4a5b6e; display:block; margin-top:6px;">
-            ✅ Un ROE alto con ROA bajo puede indicar alto apalancamiento financiero (uso de deuda).
-            ✅ Un ROA alto indica buena gestión de los activos.
-            ✅ El ROI es más específico y se usa para decisiones de inversión.
-        </span>
+    <!-- ========================================================= -->
+    <!-- 3. ROI / ROE / ROA                                         -->
+    <!-- ========================================================= -->
+    <div class="card-financiero">
+        <h1>📊 ROI · ROE · ROA</h1>
+        <p class="subtitle">Indicadores financieros clave para medir la rentabilidad y eficiencia de una empresa</p>
+
+        <div class="grid-3">
+            <!-- ROI -->
+            <div class="card card-roi">
+                <div class="icon">💰</div>
+                <h2>ROI</h2>
+                <div class="tagline">Retorno sobre la Inversión</div>
+                <p><strong>¿Qué mide?</strong> La rentabilidad de una inversión realizada. Compara la ganancia obtenida con el costo de la inversión.</p>
+                <div class="formula">ROI = (Ganancia – Inversión) / Inversión × 100</div>
+                <div class="example">
+                    <strong>📌 Ejemplo:</strong> Inviertes S/ 10,000 en una campaña publicitaria y generas S/ 15,000 en ventas adicionales.<br>
+                    <span style="background:#eaf2fd; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
+                        ROI = (15,000 – 10,000) / 10,000 × 100 = <strong>50%</strong>
+                    </span>
+                    <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Por cada sol invertido, ganaste S/ 0.50 adicionales.</span>
+                </div>
+                <p style="margin-top:10px; font-size:0.9rem; color:#1e6f9f;"><span class="badge blue">PREGUNTA CLAVE</span> “¿Cuánto gané respecto a lo que invertí?”</p>
+            </div>
+
+            <!-- ROE -->
+            <div class="card card-roe">
+                <div class="icon">🏦</div>
+                <h2>ROE</h2>
+                <div class="tagline">Retorno sobre el Capital</div>
+                <p><strong>¿Qué mide?</strong> La rentabilidad que genera una empresa con el capital aportado por los accionistas. Indica la eficiencia del capital propio.</p>
+                <div class="formula">ROE = (Utilidad Neta) / (Patrimonio Neto) × 100</div>
+                <div class="example">
+                    <strong>📌 Ejemplo:</strong> Una empresa tiene una utilidad neta de S/ 120,000 y un patrimonio neto (capital de accionistas) de S/ 800,000.<br>
+                    <span style="background:#eafaf0; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
+                        ROE = 120,000 / 800,000 × 100 = <strong>15%</strong>
+                    </span>
+                    <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Los accionistas obtuvieron un 15% de retorno sobre su capital.</span>
+                </div>
+                <p style="margin-top:10px; font-size:0.9rem; color:#27ae60;"><span class="badge green">PREGUNTA CLAVE</span> “¿Cuánto ganaron los accionistas respecto a su capital?”</p>
+            </div>
+
+            <!-- ROA -->
+            <div class="card card-roa">
+                <div class="icon">🏗️</div>
+                <h2>ROA</h2>
+                <div class="tagline">Retorno sobre los Activos</div>
+                <p><strong>¿Qué mide?</strong> La eficiencia con la que una empresa utiliza sus activos totales para generar ganancias. Mide la productividad de los activos.</p>
+                <div class="formula">ROA = (Utilidad Neta) / (Activos Totales) × 100</div>
+                <div class="example">
+                    <strong>📌 Ejemplo:</strong> Una empresa tiene una utilidad neta de S/ 90,000 y activos totales (maquinaria, inventario, etc.) por S/ 1,200,000.<br>
+                    <span style="background:#fef5e7; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
+                        ROA = 90,000 / 1,200,000 × 100 = <strong>7.5%</strong>
+                    </span>
+                    <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Cada sol en activos generó S/ 0.075 de utilidad.</span>
+                </div>
+                <p style="margin-top:10px; font-size:0.9rem; color:#e67e22;"><span class="badge orange">PREGUNTA CLAVE</span> “¿Qué tan productivos son los activos de la empresa?”</p>
+            </div>
+        </div>
+
+        <!-- Tabla comparativa -->
+        <div class="comparison-section">
+            <h3>📋 Comparativa rápida: ROI · ROE · ROA</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Indicador</th>
+                        <th>¿Qué mide?</th>
+                        <th>Fórmula</th>
+                        <th>Pregunta clave</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight-blue">
+                        <td><strong>ROI</strong></td>
+                        <td>Rentabilidad de una inversión específica</td>
+                        <td>(Ganancia – Inversión) / Inversión</td>
+                        <td>“¿Cuánto gané respecto a lo que invertí?”</td>
+                    </tr>
+                    <tr class="highlight-green">
+                        <td><strong>ROE</strong></td>
+                        <td>Rentabilidad del capital de los accionistas</td>
+                        <td>Utilidad Neta / Patrimonio Neto</td>
+                        <td>“¿Cuánto ganaron los accionistas respecto a su capital?”</td>
+                    </tr>
+                    <tr class="highlight-orange">
+                        <td><strong>ROA</strong></td>
+                        <td>Eficiencia en el uso de los activos</td>
+                        <td>Utilidad Neta / Activos Totales</td>
+                        <td>“¿Qué tan productivos son los activos de la empresa?”</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer-note">
+            <strong>💡 Interpretación clave:</strong>
+            <span style="display:inline-block; margin:6px 8px 0 0;">
+                <span class="badge blue">ROI</span> → evalúa proyectos o inversiones concretas.
+                <span class="badge green">ROE</span> → mide el rendimiento para los accionistas (capital propio).
+                <span class="badge orange">ROA</span> → mide la eficiencia operativa global (todos los activos).
+            </span>
+            <br><span style="font-size:0.9rem; color:#4a5b6e; display:block; margin-top:6px;">
+                ✅ Un ROE alto con ROA bajo puede indicar alto apalancamiento financiero (uso de deuda).
+                ✅ Un ROA alto indica buena gestión de los activos.
+                ✅ El ROI es más específico y se usa para decisiones de inversión.
+            </span>
+        </div>
     </div>
 
 </div>
 </body>
 </html>
-```
