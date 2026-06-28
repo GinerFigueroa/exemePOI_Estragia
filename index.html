@@ -264,3 +264,309 @@
 </div>
 </body>
 </html>
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI, ROE, ROA - Indicadores Financieros</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            color: #0b2b4a;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #4a5b6e;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        @media (max-width: 800px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background: #f9fcff;
+            border-radius: 18px;
+            padding: 24px 22px 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            border: 1px solid #e6edf6;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        .card .icon {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+        }
+        .card h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0b2b4a;
+            letter-spacing: -0.5px;
+        }
+        .card .tagline {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a3a5a;
+            margin: 8px 0 12px;
+            padding: 8px 14px;
+            background: #eaf2fd;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .card p {
+            color: #2c3e50;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+        .card .formula {
+            background: #0d1b2a;
+            color: #e3eaf0;
+            font-family: 'Courier New', monospace;
+            padding: 12px 16px;
+            border-radius: 10px;
+            margin: 14px 0 10px;
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        .card .example {
+            background: #f2f7ff;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border-left: 4px solid #1e6f9f;
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+        .card .example strong {
+            color: #0b2b4a;
+        }
+        .badge {
+            display: inline-block;
+            font-weight: 600;
+            padding: 2px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            color: white;
+        }
+        .badge.blue { background: #1e6f9f; }
+        .badge.green { background: #27ae60; }
+        .badge.orange { background: #e67e22; }
+        .badge.purple { background: #8e44ad; }
+
+        /* Colores específicos por tarjeta */
+        .card-roi { border-top: 6px solid #1e6f9f; }
+        .card-roe { border-top: 6px solid #27ae60; }
+        .card-roa { border-top: 6px solid #e67e22; }
+
+        .comparison-section {
+            background: #f8faff;
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-top: 20px;
+            border: 1px solid #e6edf6;
+        }
+        .comparison-section h3 {
+            color: #0b2b4a;
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+        th {
+            background: #1a3a5a;
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e9f2;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        .highlight-blue { background: #eaf2fd; }
+        .highlight-green { background: #eafaf0; }
+        .highlight-orange { background: #fef5e7; }
+
+        .footer-note {
+            background: #eaf2fd;
+            padding: 16px 22px;
+            border-radius: 14px;
+            margin-top: 28px;
+            border: 1px solid #c9daf5;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #1a3a5a;
+        }
+        .footer-note strong {
+            color: #0b2b4a;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 18px; }
+            h1 { font-size: 1.5rem; }
+            .card h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>📊 ROI · ROE · ROA</h1>
+    <p class="subtitle">Indicadores financieros clave para medir la rentabilidad y eficiencia de una empresa</p>
+
+    <!-- ================================================== -->
+    <!-- TARJETAS ROI, ROE, ROA                             -->
+    <!-- ================================================== -->
+    <div class="grid-3">
+        <!-- ROI -->
+        <div class="card card-roi">
+            <div class="icon">💰</div>
+            <h2>ROI</h2>
+            <div class="tagline">Retorno sobre la Inversión</div>
+            <p><strong>¿Qué mide?</strong> La rentabilidad de una inversión realizada. Compara la ganancia obtenida con el costo de la inversión.</p>
+            <div class="formula">ROI = (Ganancia – Inversión) / Inversión × 100</div>
+            <div class="example">
+                <strong>📌 Ejemplo:</strong> Inviertes S/ 10,000 en una campaña publicitaria y generas S/ 15,000 en ventas adicionales.<br>
+                <span style="background:#eaf2fd; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
+                    ROI = (15,000 – 10,000) / 10,000 × 100 = <strong>50%</strong>
+                </span>
+                <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Por cada sol invertido, ganaste S/ 0.50 adicionales.</span>
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color:#1e6f9f;"><span class="badge blue">PREGUNTA CLAVE</span> “¿Cuánto gané respecto a lo que invertí?”</p>
+        </div>
+
+        <!-- ROE -->
+        <div class="card card-roe">
+            <div class="icon">🏦</div>
+            <h2>ROE</h2>
+            <div class="tagline">Retorno sobre el Capital</div>
+            <p><strong>¿Qué mide?</strong> La rentabilidad que genera una empresa con el capital aportado por los accionistas. Indica la eficiencia del capital propio.</p>
+            <div class="formula">ROE = (Utilidad Neta) / (Patrimonio Neto) × 100</div>
+            <div class="example">
+                <strong>📌 Ejemplo:</strong> Una empresa tiene una utilidad neta de S/ 120,000 y un patrimonio neto (capital de accionistas) de S/ 800,000.<br>
+                <span style="background:#eafaf0; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
+                    ROE = 120,000 / 800,000 × 100 = <strong>15%</strong>
+                </span>
+                <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Los accionistas obtuvieron un 15% de retorno sobre su capital.</span>
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color:#27ae60;"><span class="badge green">PREGUNTA CLAVE</span> “¿Cuánto ganaron los accionistas respecto a su capital?”</p>
+        </div>
+
+        <!-- ROA -->
+        <div class="card card-roa">
+            <div class="icon">🏗️</div>
+            <h2>ROA</h2>
+            <div class="tagline">Retorno sobre los Activos</div>
+            <p><strong>¿Qué mide?</strong> La eficiencia con la que una empresa utiliza sus activos totales para generar ganancias. Mide la productividad de los activos.</p>
+            <div class="formula">ROA = (Utilidad Neta) / (Activos Totales) × 100</div>
+            <div class="example">
+                <strong>📌 Ejemplo:</strong> Una empresa tiene una utilidad neta de S/ 90,000 y activos totales (maquinaria, inventario, etc.) por S/ 1,200,000.<br>
+                <span style="background:#fef5e7; padding:2px 10px; border-radius:12px; display:inline-block; margin-top:6px;">
+                    ROA = 90,000 / 1,200,000 × 100 = <strong>7.5%</strong>
+                </span>
+                <br><span style="font-size:0.9rem; color:#4a5b6e;">👉 Cada sol en activos generó S/ 0.075 de utilidad.</span>
+            </div>
+            <p style="margin-top:10px; font-size:0.9rem; color:#e67e22;"><span class="badge orange">PREGUNTA CLAVE</span> “¿Qué tan productivos son los activos de la empresa?”</p>
+        </div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- TABLA COMPARATIVA                                  -->
+    <!-- ================================================== -->
+    <div class="comparison-section">
+        <h3>📋 Comparativa rápida: ROI · ROE · ROA</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Indicador</th>
+                    <th>¿Qué mide?</th>
+                    <th>Fórmula</th>
+                    <th>Pregunta clave</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-blue">
+                    <td><strong>ROI</strong></td>
+                    <td>Rentabilidad de una inversión específica</td>
+                    <td>(Ganancia – Inversión) / Inversión</td>
+                    <td>“¿Cuánto gané respecto a lo que invertí?”</td>
+                </tr>
+                <tr class="highlight-green">
+                    <td><strong>ROE</strong></td>
+                    <td>Rentabilidad del capital de los accionistas</td>
+                    <td>Utilidad Neta / Patrimonio Neto</td>
+                    <td>“¿Cuánto ganaron los accionistas respecto a su capital?”</td>
+                </tr>
+                <tr class="highlight-orange">
+                    <td><strong>ROA</strong></td>
+                    <td>Eficiencia en el uso de los activos</td>
+                    <td>Utilidad Neta / Activos Totales</td>
+                    <td>“¿Qué tan productivos son los activos de la empresa?”</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- NOTA ADICIONAL                                     -->
+    <!-- ================================================== -->
+    <div class="footer-note">
+        <strong>💡 Interpretación clave:</strong>
+        <span style="display:inline-block; margin:6px 8px 0 0;">
+            <span class="badge blue">ROI</span> → evalúa proyectos o inversiones concretas.
+            <span class="badge green">ROE</span> → mide el rendimiento para los accionistas (capital propio).
+            <span class="badge orange">ROA</span> → mide la eficiencia operativa global (todos los activos).
+        </span>
+        <br><span style="font-size:0.9rem; color:#4a5b6e; display:block; margin-top:6px;">
+            ✅ Un ROE alto con ROA bajo puede indicar alto apalancamiento financiero (uso de deuda).
+            ✅ Un ROA alto indica buena gestión de los activos.
+            ✅ El ROI es más específico y se usa para decisiones de inversión.
+        </span>
+    </div>
+
+</div>
+</body>
+</html>
+```
